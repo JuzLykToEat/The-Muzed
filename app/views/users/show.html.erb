@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="center">
+			<%= image_tag avatar_url(@user), class: "avatar-full" %>
+
+			<% if current_user != @user %>
+				<div class="row-space-2">
+					<%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
+				</div>
+			<% end %>
+
+		</div>
+		<br>
+		<div class="panel panel-default">
+			<div class="panel-heading">Details</div>
+			<div class="panel-body">
+				Email: <%= @user.email %>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-9">
+		<h2><%= @user.fullname %></h2>
+
+		<div class="description row-space-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">Booked Class</div>
+				<div class="panel-body">
+					<% @user.timeslots.each do |timeslot| %>
+						<%= timeslot.schedule.subject.title %><br>
+						Teacher: <%= timeslot.schedule.subject.teacher.fullname %><br>
+						<%= timeslot.schedule.date.strftime("%d %B, %Y") %>
+						<%= timeslot.time.strftime("%I:%M %P") %>
+						<hr>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

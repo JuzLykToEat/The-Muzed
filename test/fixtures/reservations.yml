@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  teacher: one
+  day: 2016-09-24 14:13:40
+  time: 2016-09-24 14:13:40
+  price: 1
+  total: 1
+
+two:
+  user: two
+  teacher: two
+  day: 2016-09-24 14:13:40
+  time: 2016-09-24 14:13:40
+  price: 1
+  total: 1

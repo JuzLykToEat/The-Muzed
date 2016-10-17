@@ -1,0 +1,27 @@
+<a class="pressable" data-toggle="modal" data-target="#schedule-<%= subject.id %>"><%= subject.title + " - " + subject.level %></a><br>
+
+<div class="modal fade" id="schedule-<%= subject.id %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <% subject.schedules.each do |schedule| %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= schedule.date.strftime("%d %B") %>
+            </div>
+            <div class="col-md-7">
+              <% schedule.timeslots.each do |timeslot| %>
+                <% if !timeslot.booked? %>
+                  <h4><%= timeslot.time.strftime("%I:%M %P") %> - RM<%= timeslot.schedule.subject.hourly_rate %></h4>
+                  <%=link_to "Book now!", new_checkout_path(timeslot: timeslot.id), class:"btn btn-lg success"%>
+                  <hr>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

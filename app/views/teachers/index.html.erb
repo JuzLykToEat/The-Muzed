@@ -1,0 +1,69 @@
+<div class="panel-body">
+
+  <%= form_for(:search, url: teachers_path, method: :get, html: { id: "search-teachers-form" }) do |f| %>
+
+  <div class="field">
+    <label>Your Area</label>
+    <%= f.text_field :search_place, autofocus: true %>
+  </div>
+
+  <div class="dropdown">
+    <button id="Categories_dropdown_subjects" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Subjects
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="Categories_dropdown_subjects">
+      <li><%= check_box_tag(:'subjects[]', "Piano") %>
+      <%= label_tag("Piano") %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= check_box_tag(:'subjects[]', "Violin") %>
+      <%= label_tag("Violin") %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= check_box_tag(:'subjects[]', "Vocal") %>
+      <%= label_tag("Vocal") %></li>
+    </ul>
+  </div>
+
+  <div class="dropdown">
+    <button id="Categories_dropdown_levels" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Levels
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="Categories_dropdown_levels">
+      <li><%= check_box_tag(:'levels[]', "Beginner") %>
+      <%= label_tag("Beginner") %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= check_box_tag(:'levels[]', "Intermediate") %>
+      <%= label_tag("Intermediate") %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= check_box_tag(:'levels[]', "Advanced") %>
+      <%= label_tag("Advanced") %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= check_box_tag(:'levels[]', "Diploma") %>
+      <%= label_tag("Diploma") %></li>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+
+  <% end %>
+
+  <% @teachers.each do |teacher| %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= link_to teacher.fullname, teacher_path(teacher.id) %>
+        <%= image_tag teacher.photos[0].image.url(:thumb) if teacher.photos.length > 0 %>
+      </div>
+      <div class="col-md-7">
+        <% teacher.subjects.each do |subject| %>
+          <%= render partial: "schedule", locals: { subject: subject } %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+
+
+</div>

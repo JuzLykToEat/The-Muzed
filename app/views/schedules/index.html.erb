@@ -1,0 +1,16 @@
+<% @schedules.each do |schedule| %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= schedule.date %>
+    </div>
+    <div class="col-md-7">
+      <% schedule.timeslots.each do |timeslot| %>
+        <% if !timeslot.booked? %>
+          <h4><%= timeslot.time  %></h4>
+          <%=link_to "Book now!", new_checkout_path(timeslot: timeslot.id), class:"btn btn-lg success"%>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<% end %>

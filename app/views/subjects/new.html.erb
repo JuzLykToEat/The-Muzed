@@ -1,0 +1,45 @@
+<div class="form">
+  <%= form_for(@subject, url: teacher_subjects_path(@teacher), :html => { id: "subject-create-form" }) do |f| %>
+    <div class="col-md-4 select">
+      <div class="form-group">
+        <label>Subject</label>
+        <%= f.select :title, [["Piano","Piano"], ["Violin","Violin"], ["Vocal","Vocal"]], id: "title", prompt: "Select...", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-4 select">
+      <div class="form-group">
+        <label>Levels Taught</label>
+        <%= f.select :level, [["Beginner","Beginner"], ["Intermediate","Intermediate"], ["Advanced","Advanced"], ["Diploma","Diploma"]], prompt: "Select...", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Hourly Rate</label>
+        <div class="input-group">
+          <div class="input-group-addon">RM</div>
+          <%= f.text_field :hourly_rate, placeholder: "eg. $100", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Schedule</label>
+          <%= f.date_field :date, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Time</label>
+          <%= f.time_field :time, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add Subject" %>
+    </div>
+  <% end %>
+</div>

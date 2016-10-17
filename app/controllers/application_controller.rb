@@ -1,0 +1,13 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+  	def configure_permitted_parameters
+  		devise_parameter_sanitizer.permit(:sign_up, keys: [:fullname, :ages_taught, :languages, :lesson_locations, :teaching_statement, :biography, :education, :address, :teach_special_needs, :active])
+  		devise_parameter_sanitizer.permit(:account_update, keys: [:fullname, :phone_number, :description, :email, :password])
+
+  	end
+
+end

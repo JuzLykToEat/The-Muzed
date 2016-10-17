@@ -1,0 +1,46 @@
+<%= form_for([@teacher, @teacher.reservations.new]) do |f| %>
+
+	<div class="row">
+		<div class="col-md-6">
+			<label>Select Day</label>
+			<%= f.text_field :day, readonly: 'true', placeholder: 'Select Day', class: 'form-control' %>
+		</div>
+		<div class="col-md-6">
+			<label>Select Time</label>
+			<%= f.time_select :time, readonly: 'true', placeholder: 'Select Time', class: 'form-control' %>
+		</div>
+	</div>
+
+	<%= f.hidden_field :teacher_id, value: @teacher.id %>
+	<%= f.hidden_field :total, id: 'reservation_total' %>
+
+	<div id="preview" style="display: none">
+		<h4><span id="message"></span></h4>
+
+		<table class="reservation-table">
+			<tbody>
+				<tr>
+					<td>Day(s)</td>
+					<td><span id="reservation_days"></span></td>
+				</tr>
+				<tr>
+					<td>Total</td>
+					<td><span id="reservation_sum"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+		<br>
+		<%= f.submit "Book Now", class: "btn btn-primary" %>
+
+<% end %>
+
+<script>
+	$(function() {
+		$('#reservation_day').datepicker({
+			dateFormat: 'dd-mm-yy'
+		});
+
+	});
+</script>

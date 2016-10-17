@@ -1,0 +1,102 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Create your beautiful profile
+	</div>
+	<div class="panel-body">
+		<div class="container">
+
+			<div class="row">
+					<div class="form-group">
+						<label>Ages Taught</label>
+						<%= f.check_box :ages_taught, { class: 'form-control', multiple: true }, "Children", nil %>
+						<%= f.label :ages_taught, "Children" %>
+						<%= f.check_box :ages_taught, { class: 'form-control', multiple: true }, "Teens", nil %>
+						<%= f.label :ages_taught, "Teens" %>
+						<%= f.check_box :ages_taught, { class: 'form-control', multiple: true }, "Adults", nil %>
+						<%= f.label :ages_taught, "Adults" %>
+						<%= f.check_box :ages_taught, { class: 'form-control', multiple: true }, "All Ages", nil %>
+						<%= f.label :ages_taught, "All Ages" %>
+					</div>
+			</div>
+
+			<div class="row">
+					<div class="form-group">
+						<label>Languages</label>
+						<%= f.check_box :languages, { class: 'form-control', multiple: true }, "English", nil %>
+						<%= f.label :languages, "English" %>
+						<%= f.check_box :languages, { class: 'form-control', multiple: true }, "Chinese", nil %>
+						<%= f.label :languages, "Chinese" %>
+						<%= f.check_box :languages, { class: 'form-control', multiple: true }, "Malay", nil %>
+						<%= f.label :languages, "Malay" %>
+						<%= f.check_box :languages, { class: 'form-control', multiple: true }, "Tamil", nil %>
+						<%= f.label :languages, "Tamil" %>
+					</div>
+			</div>
+
+				<div class="col-md-4 select">
+					<div class="form-group">
+						<label>Lesson Locations</label>
+						<%= f.select :lesson_locations, [["Teacher's Studio","Teacher's Studio"], ["Student's Place","Student's Place"], ["Common Ground","Common Ground"]], prompt: "Select...", class: "form-control" %>
+					</div>
+				</div>
+
+
+			<div class="row">
+				<div class="form-group">
+					<label>Teaching Statement</label>
+					<%= f.text_field :teaching_statement, placeholder: "Short and concise", class: "form-control" %>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<label>Biography</label>
+					<%= f.text_area :biography, rows: 5, placeholder: "About yourself and your achievement", class: "form-control" %>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<label>Education</label>
+					<%= f.text_area :education, rows: 5, placeholder: "Education background", class: "form-control" %>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<label>Address</label>
+					<%= f.text_field :address, placeholder: "Your house/studio address", class: "form-control" %>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<%= f.check_box :teach_special_needs %> Do you teach special needs?
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<span class="btn btn-default btn-file">
+						    <i class="fa fa-cloud-upload fa-lg"></i> Upload Photos
+						    <%= file_field_tag "images[]", type: :file, multiple: true %>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div id="photos"><%= render 'photos/list' %></div>
+
+			<div class="row">
+				<div class="form-group">
+					<%= f.check_box :active %> Active
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
