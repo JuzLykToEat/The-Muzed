@@ -1,24 +1,19 @@
-# README
+# The Muzed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the Capstone project for MaGIC's Full Stack Web Development Bootcamp.
 
-Things you may want to cover:
+Features of this website:
 
-* Ruby version
+* `User` & `Teacher` models created using Devise.
 
-* System dependencies
+* `Subject`, `Schedule` & `Timeslot` models used for available classes.
 
-* Configuration
+* Teachers are able to add classes with their account.
 
-* Database creation
+* Geocoder is used to convert teachers' addresses to latitude and longitude.
 
-* Database initialization
+* Search function added to search for teachers based on location and other criteria using searchkick.
 
-* How to run the test suite
+* Payment implemented using Braintree for class booking.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Google map API used to display teacher's location in their profile.
